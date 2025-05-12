@@ -17,3 +17,14 @@ Hi, my name is Mayela Galaz and I hold a degree in cybersecurity. Throughout my 
 | **ServiceNow** | Tracking and responding to incidents, documenting investigations, managing tickets |
 | **Splunk**     | Correlating logs, creating alerts/dashboards, identifying indicators of compromise |
 | **Snort**      | Detecting and alerting on malicious activity, tuning IDS rules, analyzing network threats |
+
+## Certifications
+
+- [Google Cybersecurity Certificate](https://coursera.org/share/272a3e8cbb80393ba504d2e2d7c6ffe0)  
+  Developed skills in security operations, network security, incident response, and threat detection.
+- ServiceNow Micro-Certifications:
+  - Virtual Agent  
+  - Flow Designer  
+  - Predictive Intelligence  
+  - Agile and Test Management Implementation  
+  - ServiceNow Fundamentals
