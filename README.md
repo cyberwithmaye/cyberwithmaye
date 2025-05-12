@@ -18,7 +18,9 @@ Hi, my name is Mayela Galaz and I hold a degree in cybersecurity. Throughout my 
 | **Splunk**     | Correlating logs, creating alerts/dashboards, identifying indicators of compromise |
 | **Snort**      | Detecting and alerting on malicious activity, tuning IDS rules, analyzing network threats |
 
-
+## Training
+### 🔐 Vulnerability Assessment
+- [Nessus & Nmap Scan Analysis](assignments/vuln-assessment/nessus_scan.md)
 
 ## Certifications
 
