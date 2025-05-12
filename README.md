@@ -25,6 +25,7 @@ Hi, my name is Mayela Galaz and I hold a degree in cybersecurity. Throughout my 
 - [Advanced Nmap Scan](assignments/vuln-assessment/advanced_nmap_scan.md)
 ### 📊 Network Traffic Analysis 
 - [Analyzing PCAP Files in Wireshark](assignments/network_traffic_analysis/wireshark.md)
+- [Capturing & Analyzing a Potential Network Incident](assignments/network_traffic_analysis/capturing_traffic_wireshark.md)
 
 ## Certifications
 
