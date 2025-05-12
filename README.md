@@ -7,7 +7,7 @@ Hi, my name is Mayela Galaz and I hold a degree in cybersecurity. Throughout my 
 |----------------|--------------------------------------------------------------------------------|
 | **pfSense**    | Managing firewall rules, monitoring network traffic, configuring IDS/IPS       |
 | **Wireshark**  | Analyzing PCAP files, identifying suspicious traffic, protocol inspection      |
-| **Nmap**       | Performing network reconnaissance, identifying open ports and services         |
+| **Nmap/Zenmap**       | Performing network reconnaissance, identifying open ports and services         |
 | **Active Directory** | Investigating authentication logs, managing user access, detecting unauthorized changes |
 | **Nessus**     | Conducting vulnerability scans, interpreting risk levels, identifying exploitable systems |
 | **OpenVAS**    | Performing system assessments, reporting on vulnerabilities, prioritizing remediation |
