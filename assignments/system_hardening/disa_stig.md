@@ -1,4 +1,4 @@
-# 🔐 DISA STIG Hardening Project (CYB 290 - Spring 2025)
+# 🔐 DISA STIG Hardening Project
 
 ## Overview
 This project demonstrates the use of **DISA Security Technical Implementation Guides (STIGs)** to harden a Windows 10 system. It was completed as part of a cybersecurity course focused on identifying and mitigating system vulnerabilities using automated compliance tools and manual configuration techniques.
