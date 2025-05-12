@@ -39,12 +39,12 @@ The most critical CAT I vulnerability identified was **V-220702**, which require
 ---
 
 ### Q2. STIG Viewer Pie Chart – First Scan  
-![First Scan](first_scan.png)
+![First Scan](images/first_scan.png)
 
 ---
 
 ### Q3. STIG Viewer Pie Chart – After Applying GPOs  
-![After GPO](after_gpo.png)
+![After GPO](images/after_gpo.png)
 
 ---
 
@@ -60,7 +60,7 @@ These vulnerabilities were not addressed by GPOs and had to be fixed manually.
 ---
 
 ### Q5. STIG Viewer Pie Chart – Final Scan After Manual Fixes  
-![Final Scan](last_scan.png)
+![Final Scan](images/last_scan.png)
 
 ---
 
