@@ -19,7 +19,7 @@ Hi, my name is Mayela Galaz and I hold a degree in cybersecurity. Throughout my 
 | **Snort**      | Detecting and alerting on malicious activity, tuning IDS rules, analyzing network threats |
 
 ## Training
-### 🔐 Vulnerability Assessment
+### 🔍 Vulnerability Assessment
 - [Nessus & Nmap Scan Analysis](assignments/vuln-assessment/nessus_scan.md)
 - [Zenmap Network Mapping](assignments/vuln-assessment/zenmap_scan.md)
 - [Advanced Nmap Scan](assignments/vuln-assessment/advanced_nmap_scan.md)
@@ -28,6 +28,9 @@ Hi, my name is Mayela Galaz and I hold a degree in cybersecurity. Throughout my 
 ### 📊 Network Traffic Analysis 
 - [Analyzing PCAP Files in Wireshark](assignments/network_traffic_analysis/wireshark.md)
 - [Capturing & Analyzing a Potential Network Incident](assignments/network_traffic_analysis/capturing_traffic_wireshark.md)
+
+### 🔐 System Hardening
+- [Using DISA STIGs](assignments/system hardening/disa_stig.md)
 
 ## Certifications
 
