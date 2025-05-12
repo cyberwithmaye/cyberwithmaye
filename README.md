@@ -22,6 +22,7 @@ Hi, my name is Mayela Galaz and I hold a degree in cybersecurity. Throughout my 
 ### 🔐 Vulnerability Assessment
 - [Nessus & Nmap Scan Analysis](assignments/vuln-assessment/nessus_scan.md)
 - [Zenmap Network Mapping](assignments/vuln-assessment/zenmap_scan.md)
+- [Advanced Nmap Scan](assignments/vuln-assessment/advanced_nmap_scan.md)
 
 ## Certifications
 
