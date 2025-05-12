@@ -30,7 +30,7 @@ Hi, my name is Mayela Galaz and I hold a degree in cybersecurity. Throughout my 
 - [Capturing & Analyzing a Potential Network Incident](assignments/network_traffic_analysis/capturing_traffic_wireshark.md)
 
 ### 🔐 System Hardening
-- [Using DISA STIGs](assignments/system hardening/disa_stig.md)
+- [Using DISA STIGs](assignments/system_hardening/disa_stig.md)
 
 ## Certifications
 
