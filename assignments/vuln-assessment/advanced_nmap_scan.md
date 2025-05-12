@@ -9,7 +9,7 @@ The goal of this vulnerability assessment is to perform an in-depth network scan
 - VIrusTotal
 
 ## 🧠 Skills Gained
-- Mastery of advanced Nmap scanning techniques, including SYN scans and version detection.
+- Mastery of advanced Nmap scanning techniques, including SYN scans, version detection, and scripts.
 - Service and OS fingerprinting to identify the specific version of software running on target systems.
 - Analyzing network scan results to determine potential vulnerabilities and security risks.
 - Risk assessment and prioritization to identify critical vulnerabilities that require immediate action.
@@ -21,104 +21,105 @@ The goal of this vulnerability assessment is to perform an in-depth network scan
 
 <details>
 <summary>Click here to view the full scan report</summary>
+## 🔍 Target: `172.16.151.187`
 
-### 🔎 Scan Summary
+### Open Ports & Services:
+- **TCP 2222**: OpenSSH 9.2p1  
+- **TCP 4000**: Apache httpd 2.4.57  
+- **UDP 631**: IPP (CUPS)  
+- **UDP 5353**: mDNS/Zeroconf
 
-#### **Target: 172.16.151.187**  
-- **Open Ports:**  
-  - 22 (SSH)  
-  - 80 (HTTP)
+### Key Vulnerabilities:
+- **CVE-2023-31122** – Apache `mod_macro` out-of-bounds read
+- **CVE-2024-47176** – CUPS remote execution via IPP
+- **mDNS** – Exposes system to MITM and service enumeration attacks
 
-- **Services Identified:**  
-  - **SSH:** SSH-2.0-OpenSSH_7.4  
-  - **HTTP:** Apache HTTPD 2.4.6 (CentOS)
-
-**So What?**  
-- **SSH (OpenSSH 7.4)**: This version is outdated and contains vulnerabilities such as **CVE-2018-15473**, a user enumeration issue, and **CVE-2017-15906**, which allows attackers to bypass authentication. SSH is a high-priority attack vector, especially when exposed to the internet without proper access restrictions.
-- **Apache HTTPD 2.4.6**: This version of Apache has known vulnerabilities, including **CVE-2017-3169**, a denial of service issue, and **CVE-2014-0231**, a buffer overflow vulnerability. Apache is commonly targeted by attackers to gain unauthorized access.
-
-**Recommendations:**  
-- **SSH**: Update OpenSSH to the latest stable version (currently OpenSSH 8.0).  
-- Restrict SSH access by using firewall rules to only allow specific IPs.  
-- Implement **Fail2ban** or similar tools to protect against brute-force login attempts.  
-- **Apache HTTPD**: Update Apache to the latest stable version (currently 2.4.51).  
-- Use a Web Application Firewall (WAF) to block known attacks targeting Apache.
+### Recommendations:
+- Restrict SSH to trusted IPs and enforce key-based auth
+- Patch Apache to latest version; disable directory listing
+- Disable IPP and mDNS if not required; block externally with firewall
+- Perform regular vulnerability assessments
 
 ---
 
-#### **Target: 172.16.151.188**  
-- **Open Ports:**  
-  - 445 (SMB)  
-  - 139 (NetBIOS)  
-  - 135 (RPC)
+## 🔍 Target: `172.16.151.188`
 
-- **Services Identified:**  
-  - **SMB:** Microsoft Windows SMB  
-  - **NetBIOS & RPC:** Remote management services
+### Open Ports & Services:
+- **TCP 2345**: Telnet (Linux/MikroTik/OpenWrt)
 
-**So What?**  
-- **SMB (Port 445)**: The presence of SMB without proper security configurations (e.g., signing) increases the risk of exploitation using techniques such as **EternalBlue** (**CVE-2017-0144**), which can allow attackers to execute arbitrary code remotely.
-- **NetBIOS (Port 139) and RPC (Port 135)**: These are legacy protocols that are often targeted for lateral movement in a network. In combination, they provide remote management and file-sharing capabilities that can be exploited by attackers for unauthorized access.
+### Key Risks:
+- Telnet sends data in plaintext  
+- Easily exploited for credential theft and MITM
 
-**Recommendations:**  
-- **SMB**: Enforce **SMB signing** to protect against man-in-the-middle attacks.  
-- Disable **SMBv1** and ensure that only **SMBv2/SMBv3** are enabled.  
-- Patch all systems to ensure they are not vulnerable to SMB exploits like **EternalBlue**.  
-- **NetBIOS & RPC**: Disable or restrict these services to internal networks only.  
-- Implement network segmentation to isolate critical systems from less secure zones.
+### Recommendations:
+- Disable Telnet entirely  
+- Use SSH with encrypted key-based authentication  
 
 ---
 
-#### **Target: 172.16.151.189**  
-- **Open Ports:**  
-  - 21 (FTP)  
-  - 23 (Telnet)  
-  - 80 (HTTP)
+## 🔍 Target: `172.16.151.189`
 
-- **Services Identified:**  
-  - **FTP:** vsFTPd 2.3.4  
-  - **Telnet**: Default Telnet service  
-  - **HTTP:** Apache HTTP Server
+### Open TCP Ports:
+- **135** MSRPC  
+- **389** LDAP  
+- **88** Kerberos  
+- **139, 445** SMB/NetBIOS  
+- **3389** RDP  
+- **80, 8530, 8531** Microsoft IIS (TRACE enabled)
 
-**So What?**  
-- **FTP (vsFTPd 2.3.4)**: Known for the **CVE-2011-2523** backdoor vulnerability, which allows remote attackers to execute arbitrary code on affected systems. FTP is an unencrypted protocol that transmits sensitive information, including login credentials, in plaintext.
-- **Telnet**: An inherently insecure protocol that sends data, including login credentials, in plaintext. It is considered obsolete and should never be used for remote management.
+### Open UDP Ports:
+- **53** DNS  
+- **67, 68** DHCP  
+- **88** Kerberos  
+- **123** NTP  
+- **137, 138** NetBIOS  
+- **500, 4500** ISAKMP/NAT-T
 
-**Recommendations:**  
-- **FTP**: Disable FTP and replace it with **SFTP** (SSH File Transfer Protocol), which offers secure, encrypted communication.  
-- **Telnet**: Disable Telnet and use **SSH** for encrypted remote access.  
-- If FTP is absolutely necessary, consider using **FTPS** (FTP Secure) or restrict FTP usage to internal networks only.
+### Key Vulnerabilities:
+- XST via HTTP TRACE (leads to session hijacking)  
+- SMB/MSRPC increase risk of remote code execution  
+- RDP can be attacked via BlueKeep (CVE-2019-0708)  
+- NTP & NetBIOS expose system to DoS and information leaks
 
----
-
-#### **Target: 172.16.151.190**  
-- **Open Ports:**  
-  - 3306 (MySQL)  
-  - 8080 (Tomcat)
-
-- **Services Identified:**  
-  - **MySQL**: MySQL Database Server  
-  - **Tomcat**: Apache Tomcat 7.0.54
-
-**So What?**  
-- **MySQL (Port 3306)**: Exposing a MySQL database to the public internet increases the risk of **brute-force** and **SQL injection** attacks. If the database is misconfigured, attackers may exploit these weaknesses.
-- **Tomcat (Port 8080)**: **Apache Tomcat 7.0.54** is susceptible to remote code execution vulnerabilities, including **CVE-2017-12617**, which allows attackers to deploy malicious WAR files on the server. If default credentials are not changed, the server can be easily compromised.
-
-**Recommendations:**  
-- **MySQL**: Restrict access to MySQL to trusted IP addresses or internal networks.  
-- **Tomcat**: Update Tomcat to the latest stable version (currently 9.0.x).  
-- Audit Tomcat configurations and ensure the **Manager App** and **Host Manager** are properly secured.  
-- **MySQL**: Use strong passwords, enable SSL encryption for database connections, and consider moving the MySQL service behind a VPN.
+### Recommendations:
+- Disable TRACE and enforce HTTPS on web servers  
+- Disable unnecessary SMB/NetBIOS ports  
+- Restrict RDP access, use MFA + VPN  
+- Use strong encryption and regular patching  
 
 ---
 
-### 🔁 Summary of Risks and Mitigations
+## 🔍 Target: `172.16.151.190`
 
-| IP Address        | High-Risk Services       | Recommendation Summary                               |
-|-------------------|--------------------------|------------------------------------------------------|
-| 172.16.151.187    | Outdated SSH/Apache      | Patch SSH and Apache, restrict access, deploy IPS tools |
-| 172.16.151.188    | SMB (445), NetBIOS       | Enforce SMB signing, disable SMBv1, patch OS         |
-| 172.16.151.189    | FTP, Telnet              | Replace with secure alternatives (SSH/SFTP)          |
-| 172.16.151.190    | Tomcat, MySQL            | Restrict access, update services, enforce firewall   |
+### Open Ports:
+- **80** HTTP (IIS 10.0, TRACE enabled)  
+- **135** MSRPC  
+- **445** SMB (signing disabled)  
+- **3389** RDP (self-signed cert)  
+- **8443** HTTPS
 
+### Critical Vulnerabilities:
+- **CVE-2017-0143 (MS17-010 / EternalBlue)** – Remote code execution via SMBv1  
+- **TRACE method on HTTP** – Cross-Site Tracing  
+- **SMB Signing Disabled** – Enables MITM and spoofing  
+- **RDP with Self-Signed Cert** – Susceptible to MITM attacks
+
+### Recommendations:
+- Apply MS17-010 patch or disable SMBv1  
+- Enable SMB signing  
+- Use trusted SSL certs for RDP, restrict access  
+- Disable TRACE method and use HTTPS  
+- Upgrade unsupported Windows systems  
+
+---
+
+## ✅ Final Recommendations
+
+- Perform regular **vulnerability scans** and **patch management**
+- Disable or block unused services via **firewall rules**
+- Enforce **multi-factor authentication** and **key-based login**
+- Use **network segmentation** for critical services
+- Monitor **logs and unusual activity**
+
+---
 </details>
