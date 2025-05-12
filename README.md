@@ -23,6 +23,8 @@ Hi, my name is Mayela Galaz and I hold a degree in cybersecurity. Throughout my 
 - [Nessus & Nmap Scan Analysis](assignments/vuln-assessment/nessus_scan.md)
 - [Zenmap Network Mapping](assignments/vuln-assessment/zenmap_scan.md)
 - [Advanced Nmap Scan](assignments/vuln-assessment/advanced_nmap_scan.md)
+- [Using Multiple Vulnerability Scanners](assignments/vuln-assessment/nessus_and_openvas.md)
+
 ### 📊 Network Traffic Analysis 
 - [Analyzing PCAP Files in Wireshark](assignments/network_traffic_analysis/wireshark.md)
 - [Capturing & Analyzing a Potential Network Incident](assignments/network_traffic_analysis/capturing_traffic_wireshark.md)
