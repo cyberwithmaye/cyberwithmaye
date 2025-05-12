@@ -21,6 +21,7 @@ The goal of this vulnerability assessment is to perform an in-depth network scan
 
 <details>
 <summary>Click here to view the full scan report</summary>
+
 ## 🔍 Target: `172.16.151.187`
 
 ### Open Ports & Services:
