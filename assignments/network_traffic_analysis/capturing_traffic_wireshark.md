@@ -4,9 +4,7 @@
 The objective of this analysis was to investigate suspicious network traffic involving two IP addresses on the organization's internal network using Wireshark. As a junior Cybersecurity Analyst, I was tasked with identifying types of network scans, assessing potential threats, and recommending appropriate mitigation strategies.
 
 ## Tools Used
-- **Wireshark** – for capturing and analyzing packet-level network traffic  
-- **Google/Digital Resources** – for researching Wireshark filters and interpreting scan patterns  
-- **PCAPNG File Export** – for isolating relevant filtered traffic  
+- **Wireshark** – for capturing and analyzing packet-level network traffic    
 
 ## Skills Gained
 - Applied multiple advanced **Wireshark display filters** to detect scan types  
