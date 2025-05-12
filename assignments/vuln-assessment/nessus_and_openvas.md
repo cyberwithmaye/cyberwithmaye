@@ -23,48 +23,57 @@ The objective of this assignment was to assess and compare the performance of tw
 
 Vulnerability scanning is important because it helps find weaknesses in systems before attackers do. Nessus Essentials and Greenbone OpenVAS are two of the most used tools for this task, and comparing them helps determine which one provides more useful results.
 
-### Difference Between the Results
+**Scan Results**:
+- **Nessus Essentials** identified **46 vulnerabilities**:
+  - 10 Critical
+  - 13 High
+  - 16 Medium
+  - 7 Low
+- **OpenVAS** identified **22 vulnerabilities**:
+  - 7 High
+  - 12 Medium
+  - 3 Low
 
-After running scans on the target system `172.16.121.154`, I observed several differences in detection and reporting styles. Nessus Essentials detected **46 vulnerabilities** in total: 10 critical, 13 high, 16 medium, and 7 low. OpenVAS found **22 vulnerabilities**: 7 high, 12 medium, and 3 low.
+The most noticeable difference between the tools was in the depth and breadth of vulnerability detection. Nessus provided significantly more comprehensive coverage of software-specific issues, while OpenVAS focused more on broader system-level risks such as:
+- End-of-life operating system detection
+- SSH and FTP brute-force detection
+- Exposed web app installers and file disclosures
 
-Notably, OpenVAS identified broader system-level risks like:
-- The OS reaching **End-of-Life (EOL)**
-- Active brute-force attempts on **SSH** and **FTP** services
+Nessus, on the other hand, highlighted:
+- Deprecated or vulnerable PHP versions (e.g., GHOST, BACKRONYM)
+- Weak SSH algorithm configurations
+- Multiple issues with web services like Drupal, offering detailed plugin output and remediation guidance
 
-Nessus, however, identified more **specific software vulnerabilities** and configuration issues, such as:
-- Vulnerabilities in **PHP versions** (e.g., GHOST, BACKRONYM)
-- Weak **SSH algorithms**
-- Multiple **Drupal-related vulnerabilities** with extensive plugin documentation
+### Vulnerability Comparison: ProFTPD mod_copy
 
-Nessus provided deeper plugin-based detail, while OpenVAS focused more on web app exposure and general configuration flaws. 
+Both scanners detected the **ProFTPD mod_copy** vulnerability, which allows attackers to use the `SITE CPFR` and `SITE CPTO` commands to copy files on an FTP server. This can lead to **unauthorized file access** or even **remote code execution**.
 
-### Vulnerability Comparison – ProFTPD mod_copy
+**Comparison of Scanner Reports**:
+- **Nessus Essentials**:
+  - Provided a detailed explanation of the vulnerability
+  - Included **Vulnerability Priority Rating (VPR)** and **Exploit Prediction Scoring System (EPSS)**
+  - Showed **live test output** using CPFR to confirm the vulnerability
+  - Referenced **attack tools** like Metasploit and Canvas
+  - Offered specific remediation steps and a link to the official bug tracker
 
-Both tools detected the **ProFTPD mod_copy** vulnerability, which allows an attacker to copy files on the FTP server using `SITE CPFR` and `SITE CPTO` commands. This can be abused for unauthorized access or remote code execution.
+- **OpenVAS**:
+  - Confirmed vulnerability presence
+  - Provided a short description and general mitigation advice
+  - Offered fewer contextual details, lacking exploit examples or scoring metrics
 
-**OpenVAS Report**:
-- Confirmed vulnerability presence
-- Provided a brief description and a general fix recommendation
-- Lacked testing data or scoring metrics
+**Conclusion**: Nessus Essentials delivered more **actionable, detailed, and validated information**, making it far superior for vulnerability management and remediation planning.
 
-**Nessus Report**:
-- Provided **exploit metrics**: VPR and EPSS scores
-- Included an actual **proof-of-concept test**, showing command output
-- Listed exploit tools like **Metasploit** and **Canvas**
-- Provided a **detailed fix**, references, and bug report links
+### Recommendation for Small Organizations
 
-Nessus clearly provided more useful and detailed information, making it easier to understand the risk and fix it quickly.
+For organizations with fewer than 15 networked devices, I strongly recommend using **Nessus Essentials** as the primary vulnerability scanner:
 
-### Best Choice for a Small Organization
+- **Benefits**:
+  - Detailed and prioritized vulnerability reporting
+  - Regular plugin updates via Tenable
+  - Fast scan times compared to OpenVAS
+  - Intuitive interface and low learning curve
+  - Free version supports up to **16 IP addresses**
 
-For a small organization with under 15 networked devices, I would recommend **Nessus Essentials** for the following reasons:
-
-- Simple and fast setup process
-- Better reporting quality and vulnerability prioritization
-- Clear remediation advice and exploitability ratings
-- Frequent plugin updates via Tenable’s vulnerability database
-- Free for scanning up to 16 IP addresses
-
-While OpenVAS is powerful and open-source, it can be slower, more complex to configure, and lacks some of the actionable detail that Nessus provides out-of-the-box. Therefore, Nessus Essentials is more practical for small teams or individual analysts who need efficiency and accuracy in vulnerability management.
+While OpenVAS is open-source and powerful in larger or more customized environments, it requires more time for configuration and deeper familiarity with vulnerability scanning concepts. Nessus Essentials offers better **out-of-the-box value** for small IT teams focused on quick insights and secure configurations.
 
 </details>
