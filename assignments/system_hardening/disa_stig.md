@@ -71,3 +71,5 @@ A manual inspection of the system revealed additional risks not detected by DISA
 - **Telnet** was installed, which transmits data in plaintext and is considered insecure.
 
 This emphasized the importance of complementing automated scanning with hands-on analysis for a more complete security assessment.
+
+</details>
